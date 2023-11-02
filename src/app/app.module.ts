@@ -4,10 +4,9 @@ import { HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UsersComponent } from './component/users/users.component';
-import { UserdetailComponent } from './component/userdetail/userdetail.component';
 
-
+import { UsersComponent } from './modules/users/users.component';
+import { UserdetailComponent } from './modules/userdetail/userdetail.component';
 
 @NgModule({
   declarations: [

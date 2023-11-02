@@ -1,27 +1,36 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map,Observable} from 'rxjs'
-import { Response } from 'src/interface/response.interface';
-import { User } from 'src/interface/user.interface';
+import { Response} from 'src/app/model/response.interface';
+import { User } from 'src/app/model/user.interface';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private readonly apiUrl:string = 'https://randomuser.me/api/'
+  private apiUrl = environment.baseURL;
 
   constructor(private http: HttpClient) { }
 
-  //Fetch users
-  getUsers(size: number = 10) : Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}/?results=${size}`).pipe(
-      map(response => this.processResponse(response)));
+  private getCustomHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
   }
 
-  //fetch one user using the user UUID
-  getUser(uuid: string) : Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}/?uuid=${uuid}`).pipe(
-      map(response => this.processResponse(response)));
+  getUsers(size: number = 10) : Observable<Response>{
+    return this.http.get<any>(`${this.apiUrl}/?results=${size}`,{
+      headers:this.getCustomHeaders(),
+    }).pipe(
+      map(this.processResponse));
+  }
+
+  getUser(uuid: string) : Observable<Response>{
+    return this.http.get<any>(`${this.apiUrl}/?uuid=${uuid}`,{
+      headers:this.getCustomHeaders(),
+    }).pipe(
+      map(this.processResponse));
   }
 
   private processResponse(response: Response):Response{

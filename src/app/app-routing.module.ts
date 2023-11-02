@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UsersComponent } from './component/users/users.component';
-import { UserdetailComponent } from './component/userdetail/userdetail.component';
-import { UserResolver } from './service/user.resolver';
+import { UsersComponent } from './modules/users/users.component';
+import { UserdetailComponent } from './modules/userdetail/userdetail.component';
+import { UserResolver } from './shared/service/user.resolver';
 
 const routes: Routes = [
   { path: 'users', component:UsersComponent},

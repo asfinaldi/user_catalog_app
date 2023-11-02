@@ -1,13 +1,7 @@
-// import { Resolve } from '@angular/router';
-
-// export const userResolver: ResolveFn<boolean> = (route, state) => {
-//   return true;
-// };
-
 import { Injectable } from '@angular/core';
 import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Response } from 'src/interface/response.interface';
+import { Response } from 'src/app/model/response.interface';
 import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })

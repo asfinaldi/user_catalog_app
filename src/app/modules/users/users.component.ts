@@ -1,6 +1,6 @@
 import { Component , OnInit} from '@angular/core';
-import { UserService } from 'src/app/service/user.service';
-import { Response } from 'src/interface/response.interface';
+import { UserService } from 'src/app/shared/service/user.service';
+import { Response } from 'src/app/model/response.interface';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUsers(15).subscribe(
-      (results: any) => {
+      (results: Response) => {
         console.log(results);
         this.response = results;
       }
